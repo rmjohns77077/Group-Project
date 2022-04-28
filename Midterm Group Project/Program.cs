@@ -5,12 +5,17 @@
         public static void Main()
         {
             Helper h = new Helper();
-
             Product p = new Product();
 
             Consumable c = p.Purchase();
-            p.HowMany(c);
-            
+            double total = p.HowMany(c);
+
+            string input = h.GetUserInput($"Your total is {total}, will that be cash, check, or credit?");
+
+            //if (input.Contains("cash"))
+            //{
+
+            //}
 
         }
 
