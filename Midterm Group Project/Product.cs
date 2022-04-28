@@ -40,9 +40,15 @@ namespace CoffeeStore
         {
             Console.WriteLine($"\nWhat quantity of {purchase.Name} would you like to purchase?");
             int amount = int.Parse(Console.ReadLine());
-            double total = (purchase.Price * 1.06) * amount;
-            return Math.Round(total, 2);
-           
+
+            double subtotal = purchase.Price * amount;
+            Console.WriteLine($"Your subtotal is: {subtotal}");
+
+            double salesTax = Math.Round((subtotal * 1.06) - subtotal, 2);
+            Console.WriteLine($"Your sales tax is: {salesTax}");
+
+            double grandTotal = (purchase.Price * 1.06) * amount;
+            return Math.Round(grandTotal, 2);
         }
 
         public Consumable Purchase()

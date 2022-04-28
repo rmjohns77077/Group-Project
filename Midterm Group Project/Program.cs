@@ -10,7 +10,7 @@
             Consumable c = p.Purchase();
             double total = p.HowMany(c);
 
-            string input = h.GetUserInput($"Your total is {total}, will that be cash, check, or credit?");
+            string input = h.GetUserInput($"Your grand total is {total}, will that be cash, check, or credit?");
 
             //if (input.Contains("cash"))
             //{
