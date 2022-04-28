@@ -38,11 +38,10 @@ namespace CoffeeStore
 
         public double HowMany(Consumable purchase)
         {
-            Console.WriteLine($"How many of {purchase} would you like?");
+            Console.WriteLine($"\nWhat quantity of {purchase.Name} would you like to purchase?");
             int amount = int.Parse(Console.ReadLine());
             double total = (purchase.Price * 1.06) * amount;
-            Console.WriteLine(total);
-            return total;
+            return Math.Round(total, 2);
            
         }
 
