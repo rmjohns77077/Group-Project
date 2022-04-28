@@ -11,6 +11,7 @@ namespace CoffeeStore
     {
         public List<Consumable> Consumables { get; set; } = new List<Consumable>();
 
+
         public Product()
         {
             Consumables.Add(new Consumable("Water", "ice cold", 0.00, ProductType.Drink));
@@ -49,6 +50,7 @@ namespace CoffeeStore
 
             double grandTotal = (purchase.Price * 1.06) * amount;
             return Math.Round(grandTotal, 2);
+            
         }
 
         public Consumable Purchase()

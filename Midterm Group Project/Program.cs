@@ -6,19 +6,34 @@
         {
             Helper h = new Helper();
             Product p = new Product();
+            List<Consumable> PurchasedConsumables = new List<Consumable>();
 
-            Consumable c = p.Purchase();
-            double total = p.HowMany(c);
 
-            string input = h.GetUserInput($"Your grand total is {total}, will that be cash, check, or credit?");
+            bool runAgain = true;
+            while (runAgain)
+            {
+                Consumable c = p.Purchase();
+                PurchasedConsumables.Add(c);
 
-            //if (input.Contains("cash"))
-            //{
+                double total = p.HowMany(c);
+                string input = h.GetUserInput($"Your grand total is {total}, will that be cash, check, or credit?");
 
-            //}
+
+                // <insertPaymentMethodHere>
+
+
+
+                Console.WriteLine("You've purchased:");
+                foreach (Consumable consumable in PurchasedConsumables)
+                {
+                    Console.WriteLine(consumable.Name);
+                }
+
+
+                runAgain = h.RunAgain();
+            }
 
         }
-
     }
 }
 
