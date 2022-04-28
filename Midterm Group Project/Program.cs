@@ -4,7 +4,14 @@
     {
         public static void Main()
         {
+            Helper h = new Helper();
+
+            Product p = new Product();
+
+            Consumable c = p.Purchase();
+            p.HowMany(c);
             
+
         }
 
     }
