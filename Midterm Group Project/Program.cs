@@ -10,34 +10,30 @@
 
             List<Consumable> PurchasedConsumables = new List<Consumable>();
 
-
             bool runAgain = true;
             while (runAgain)
             {
                 Consumable c = p.Purchase();
                 PurchasedConsumables.Add(c);
-                //add quantity to list also?
-
-                double total = p.TotalFinder(c);
-                string input = h.GetUserInput($"Your grand total is {total}, will that be cash, check, or credit?");
-
-
-
-                // <insertPaymentMethodHere>
+                int quantity = p.QuantityFinder(c);
+                
+                double total = p.TotalFinder(c, quantity);
+                string input = h.GetUserInput($"Your grand total is ${total}, will that be cash, check, or credit?");
                 pm.PayUs(input, total);
 
+                c.QuantityPurchased = quantity + c.QuantityPurchased;
 
-
-                Console.WriteLine("\nYou've purchased:");
-                foreach (Consumable consumable in PurchasedConsumables)
+                Console.WriteLine("\n============= Working Reciept =============");
+                foreach (Consumable con in PurchasedConsumables)
                 {
-                    Console.WriteLine(consumable.Name);
+                    Console.WriteLine();
+                    Console.WriteLine($"Item: {con.Name} Quantity: {con.QuantityPurchased}");
+                    Console.WriteLine();
                 }
-
-
+                Console.WriteLine("===========================================");
+               
                 runAgain = h.RunAgain();
             }
-
         }
     }
 }

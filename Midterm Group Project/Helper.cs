@@ -16,7 +16,7 @@ namespace CoffeeStore
         }
         public bool RunAgain()
         {
-            Console.WriteLine("\nWould you like to run the program again? Y/N");
+            Console.WriteLine("\nWould you like to make another purchase? Y/N");
             string answer = Console.ReadLine().ToLower().Trim();
             if (answer == "y")
             {
