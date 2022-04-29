@@ -6,6 +6,8 @@
         {
             Helper h = new Helper();
             Product p = new Product();
+            Payment pm = new Payment();
+
             List<Consumable> PurchasedConsumables = new List<Consumable>();
 
 
@@ -14,16 +16,19 @@
             {
                 Consumable c = p.Purchase();
                 PurchasedConsumables.Add(c);
+                //add quantity to list also?
 
-                double total = p.HowMany(c);
+                double total = p.TotalFinder(c);
                 string input = h.GetUserInput($"Your grand total is {total}, will that be cash, check, or credit?");
 
 
+
                 // <insertPaymentMethodHere>
+                pm.PayUs(input, total);
 
 
 
-                Console.WriteLine("You've purchased:");
+                Console.WriteLine("\nYou've purchased:");
                 foreach (Consumable consumable in PurchasedConsumables)
                 {
                     Console.WriteLine(consumable.Name);

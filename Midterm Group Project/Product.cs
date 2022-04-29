@@ -37,7 +37,7 @@ namespace CoffeeStore
             }
         }
 
-        public double HowMany(Consumable purchase)
+        public double TotalFinder(Consumable purchase)
         {
             Console.WriteLine($"\nWhat quantity of {purchase.Name} would you like to purchase?");
             int amount = int.Parse(Console.ReadLine());
@@ -55,9 +55,9 @@ namespace CoffeeStore
 
         public Consumable Purchase()
         {
-            Console.WriteLine("Hello and welcome to the ARA Coffee ");
+            Console.WriteLine("Hello and welcome to the ARA Coffee!\n");
             PrintProducts();
-            Console.WriteLine("Please select the item(s) you wish to purchase.");
+            Console.WriteLine("Please select the item you wish to purchase:");
             string input = Console.ReadLine();
 
             Console.WriteLine();
