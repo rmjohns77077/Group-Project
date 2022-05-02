@@ -83,6 +83,7 @@ namespace CoffeeStore
                     continueFlag= false;
                     
                 }
+              
             } while (continueFlag);
             Consumable c = Consumables[index];
             c.PrintInfo();
