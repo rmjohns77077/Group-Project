@@ -18,19 +18,22 @@
                 int quantity = p.QuantityFinder(c);
                 
                 double total = p.TotalFinder(c, quantity);
-                string input = h.GetUserInput($"Your grand total is ${total}, will that be cash, check, or credit?");
-                
-                /*
-                if (!input.Contains("cash") || (!input.Contains("check")) || (!input.Contains("credit")))
-                {
-                    runAgain = true;
-                }
-                else
-                {
-                    pm.PayUs(input, total);
-                }
-                */
 
+                string input;
+                while (runAgain == true)
+                {
+                    input = h.GetUserInput($"Your grand total is ${total}, will that be cash, check, or credit?");
+                    bool paid = pm.PayUs(input, total);
+                    if (paid == false)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                
                 c.QuantityPurchased = quantity + c.QuantityPurchased;
 
                 Console.WriteLine("\n============= Working Reciept =============");

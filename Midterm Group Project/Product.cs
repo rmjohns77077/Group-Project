@@ -51,12 +51,10 @@ namespace CoffeeStore
                 Console.WriteLine("Please enter a valid quantity and try again...");
                 return QuantityFinder(purchase);
             }
-
         }
 
         public double TotalFinder(Consumable purchase, int amount)
         {
-
             double subtotal = purchase.Price * amount;
             Console.WriteLine($"Your subtotal is: ${subtotal}");
 
@@ -77,9 +75,7 @@ namespace CoffeeStore
                 PrintProducts();
                 Console.WriteLine("Please select the item you wish to purchase:");
                 string input = Console.ReadLine();
-
                 Console.WriteLine();
-
                 try
                 {
                     index = int.Parse(input);
@@ -91,11 +87,9 @@ namespace CoffeeStore
                     index = -1;
                     continueFlag = true;
                 }
-
                 if(index < 0 || index >= Consumables.Count)
                 
                 {
-                   //this is true because I  want to re-enter the input
                     continueFlag = true;
                     Console.WriteLine("Please enter valid input and try again...");
                 }
@@ -103,7 +97,7 @@ namespace CoffeeStore
                 {
                     continueFlag= false;
                 }
-              
+
             } while (continueFlag);
 
             Consumable c = Consumables[index];

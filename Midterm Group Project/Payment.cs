@@ -11,10 +11,9 @@ namespace CoffeeStore
         public Payment()
         {
         }
-        public void PayUs(string input, double total)
+        public bool PayUs(string input, double total)
         {
             bool paid = false;
-
             if (input.Contains("cash"))
             {
                 do
@@ -59,9 +58,9 @@ namespace CoffeeStore
                         string cvv = Console.ReadLine();
                         if (cvv.Length == 3 || cvv.Length == 4)
                         {
-                            Console.WriteLine("Please enter the expiration date: MM/DD/YYYY");
+                            Console.WriteLine("Please enter the expiration date: MM/YY");
                             string expDate = Console.ReadLine();
-                            if (expDate.Length == 8)
+                            if (expDate.Length == 4)
                             {
                                 Console.WriteLine("Card accepted. Thanks, you're all set.");
                                 paid = true;
@@ -82,6 +81,7 @@ namespace CoffeeStore
                     {
                         Console.WriteLine("Invalid card number.");
                         paid = false;
+                        
                     }
                 }
                 while (paid == false);
@@ -112,10 +112,9 @@ namespace CoffeeStore
             else
             {
                 Console.WriteLine("Please enter a valid form of payment...");
-
+                paid = false;
             }
-            
-
+            return paid;
         }
     }
 }
