@@ -65,7 +65,39 @@ namespace CoffeeStore
 
             Console.WriteLine();
 
-            int index = int.Parse(input);
+            int index = 0;
+
+            bool canParse = false;
+            do
+            {
+                try
+                {
+                    index = int.Parse(input);
+                    canParse = true;
+                    if (index >= 0 && index <= Consumables.Count)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select a valid menu option.");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("That was not an option, please try again.");
+                    index = -1;
+                    canParse = false;
+                    break;
+
+                }
+
+            }
+            while (canParse == false);
+
+            //int.TryParse(input, out int index);
+            //int index = int.Parse(input);
+
             Consumable c = Consumables[index];
             c.PrintInfo();
             return c;
