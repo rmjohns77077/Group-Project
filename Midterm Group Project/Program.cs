@@ -16,10 +16,9 @@
                 Consumable c = p.Purchase();
                 PurchasedConsumables.Add(c);
                 int quantity = p.QuantityFinder(c);
-                
                 double total = p.TotalFinder(c, quantity);
-
                 string input;
+
                 while (runAgain == true)
                 {
                     input = h.GetUserInput($"Your grand total is ${total}, will that be cash, check, or credit?");
@@ -33,14 +32,13 @@
                         break;
                     }
                 }
-                
                 c.QuantityPurchased = quantity + c.QuantityPurchased;
 
                 Console.WriteLine("\n============= Working Reciept =============");
                 foreach (Consumable con in PurchasedConsumables)
                 {
                     Console.WriteLine();
-                    Console.WriteLine($"Item: {con.Name} Quantity: {con.QuantityPurchased}");
+                    Console.WriteLine($"Item: {con.Name}, Quantity: {con.QuantityPurchased}");
                     Console.WriteLine();
                 }
                 Console.WriteLine("===========================================");
