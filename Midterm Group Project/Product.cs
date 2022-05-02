@@ -59,16 +59,35 @@ namespace CoffeeStore
         public Consumable Purchase()
         {
             Console.WriteLine("Hello and welcome to the ARA Coffee!\n");
-            PrintProducts();
-            Console.WriteLine("Please select the item you wish to purchase:");
-            string input = Console.ReadLine();
+            var continueFlag = false;
+            var index = 0;
+            do
+            {
 
-            Console.WriteLine();
+                PrintProducts();
+                Console.WriteLine("Please select the item you wish to purchase:");
+                string input = Console.ReadLine();
 
-            int index = int.Parse(input);
+                Console.WriteLine();
+
+                 index = int.Parse(input);
+                if(index < 0 || index >= Consumables.Count)
+                
+                {
+                   //this is true because I  want to re-enter the input
+                    continueFlag = true;
+                    Console.WriteLine("You done messed up A-A-Ron!");
+                }
+                else
+                {
+                    continueFlag= false;
+                    
+                }
+            } while (continueFlag);
             Consumable c = Consumables[index];
             c.PrintInfo();
             return c;
+
         }
     }
 }
