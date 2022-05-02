@@ -59,48 +59,36 @@ namespace CoffeeStore
         public Consumable Purchase()
         {
             Console.WriteLine("Hello and welcome to the ARA Coffee!\n");
-            PrintProducts();
-            Console.WriteLine("Please select the item you wish to purchase:");
-            string input = Console.ReadLine();
-
-            Console.WriteLine();
-
-            int index = 0;
-
-            bool canParse = false;
+            var continueFlag = false;
+            var index = 0;
             do
             {
-                try
+
+                PrintProducts();
+                Console.WriteLine("Please select the item you wish to purchase:");
+                string input = Console.ReadLine();
+
+                Console.WriteLine();
+
+                 index = int.Parse(input);
+                if(index < 0 || index >= Consumables.Count)
+                
                 {
-                    index = int.Parse(input);
-                    canParse = true;
-                    if (index >= 0 && index <= Consumables.Count)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please select a valid menu option.");
-                    }
+                   //this is true because I  want to re-enter the input
+                    continueFlag = true;
+                    Console.WriteLine("You done messed up A-A-Ron!");
                 }
-                catch (FormatException)
+                else
                 {
-                    Console.WriteLine("That was not an option, please try again.");
-                    index = -1;
-                    canParse = false;
-                    break;
-
+                    continueFlag= false;
+                    
                 }
-
-            }
-            while (canParse == false);
-
-            //int.TryParse(input, out int index);
-            //int index = int.Parse(input);
-
+              
+            } while (continueFlag);
             Consumable c = Consumables[index];
             c.PrintInfo();
             return c;
+
         }
     }
 }
