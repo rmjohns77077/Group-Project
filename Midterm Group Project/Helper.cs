@@ -11,7 +11,7 @@ namespace CoffeeStore
         public string GetUserInput(string prompt)
         {
             Console.WriteLine(prompt);
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower().Trim();
             return input;
         }
         public bool RunAgain()

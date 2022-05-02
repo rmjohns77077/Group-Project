@@ -14,7 +14,8 @@ namespace CoffeeStore
         public void PayUs(string input, double total)
         {
             bool paid = false;
-            if (input.ToLower().Trim().Contains("cash"))
+
+            if (input.Contains("cash"))
             {
                 do
                 {
@@ -46,7 +47,7 @@ namespace CoffeeStore
                 }
                 while (paid == false);
             }
-            else if (input.ToLower().Trim().Contains("credit"))
+            else if (input.Contains("credit"))
             {
                 do
                 {
@@ -59,8 +60,8 @@ namespace CoffeeStore
                         if (cvv.Length == 3 || cvv.Length == 4)
                         {
                             Console.WriteLine("Please enter the expiration date: MM/DD/YYYY");
-                            string expdate = Console.ReadLine();
-                            if (expdate.Length == 8)
+                            string expDate = Console.ReadLine();
+                            if (expDate.Length == 8)
                             {
                                 Console.WriteLine("Card accepted. Thanks, you're all set.");
                                 paid = true;
@@ -80,12 +81,12 @@ namespace CoffeeStore
                     else
                     {
                         Console.WriteLine("Invalid card number.");
-                        paid= false;
+                        paid = false;
                     }
                 }
                 while (paid == false);
             }
-            else if (input.ToLower().Trim().Contains("check"))
+            else if (input.Contains("check"))
             {
                 do
                 {
@@ -110,9 +111,11 @@ namespace CoffeeStore
             }
             else
             {
-                Console.WriteLine("That payment type was not accepted, please try again.");
-            }        
-                 
+                Console.WriteLine("Please enter a valid form of payment...");
+
+            }
+            
+
         }
     }
 }

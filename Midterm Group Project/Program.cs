@@ -19,7 +19,17 @@
                 
                 double total = p.TotalFinder(c, quantity);
                 string input = h.GetUserInput($"Your grand total is ${total}, will that be cash, check, or credit?");
-                pm.PayUs(input, total);
+                
+                /*
+                if (!input.Contains("cash") || (!input.Contains("check")) || (!input.Contains("credit")))
+                {
+                    runAgain = true;
+                }
+                else
+                {
+                    pm.PayUs(input, total);
+                }
+                */
 
                 c.QuantityPurchased = quantity + c.QuantityPurchased;
 
