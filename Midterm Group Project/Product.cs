@@ -39,13 +39,22 @@ namespace CoffeeStore
         public int QuantityFinder(Consumable purchase)
         {
             Console.WriteLine($"\nWhat quantity of {purchase.Name} would you like to purchase?");
-            int amount = int.Parse(Console.ReadLine());
-            return amount;
+
+            string input = Console.ReadLine();
+            try
+            {
+                int amount = int.Parse(input);
+                return amount;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Please enter a valid quantity and try again...");
+                return QuantityFinder(purchase);
+            }
         }
 
         public double TotalFinder(Consumable purchase, int amount)
         {
-
             double subtotal = purchase.Price * amount;
             Console.WriteLine($"Your subtotal is: ${subtotal}");
 
@@ -59,36 +68,41 @@ namespace CoffeeStore
         public Consumable Purchase()
         {
             Console.WriteLine("Hello and welcome to the ARA Coffee!\n");
-            var continueFlag = false;
-            var index = 0;
+            bool continueFlag = false;
+            int index = 0;
             do
             {
-
                 PrintProducts();
                 Console.WriteLine("Please select the item you wish to purchase:");
                 string input = Console.ReadLine();
-
                 Console.WriteLine();
-
-                 index = int.Parse(input);
+                try
+                {
+                    index = int.Parse(input);
+                    continueFlag = false;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("That input was not acceptable.");
+                    index = -1;
+                    continueFlag = true;
+                }
                 if(index < 0 || index >= Consumables.Count)
                 
                 {
-                   //this is true because I  want to re-enter the input
                     continueFlag = true;
-                    Console.WriteLine("You done messed up A-A-Ron!");
+                    Console.WriteLine("Please enter valid input and try again...");
                 }
                 else
                 {
                     continueFlag= false;
-                    
                 }
-              
+
             } while (continueFlag);
+
             Consumable c = Consumables[index];
             c.PrintInfo();
             return c;
-
         }
     }
 }
