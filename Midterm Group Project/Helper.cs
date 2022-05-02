@@ -14,6 +14,7 @@ namespace CoffeeStore
             string input = Console.ReadLine().ToLower().Trim();
             return input;
         }
+
         public bool RunAgain()
         {
             Console.WriteLine("\nWould you like to make another purchase? Y/N");
